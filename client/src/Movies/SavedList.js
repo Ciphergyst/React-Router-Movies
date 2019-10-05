@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const SavedList = props => (
   <div className="saved-list">
@@ -8,6 +8,7 @@ const SavedList = props => (
       <span className="saved-movie">{movie.title}</span>
     ))}
     <Link to ="/" className="home-button">Home</Link>
+    
   </div>
 );
 

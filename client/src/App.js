@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
-import Movie from './Movies/Movie';
-import SavedList from './Movies/SavedList';
+import { BrowserRouter, Route } from 'react-router-dom';
 import MovieList from './Movies/MovieList';
+import Movie from './Movies/Movie';
 import MovieCard from './Movies/MovieCard';
-// import MoviePage from './MoviePage';
+
+import SavedList from './Movies/SavedList';
 
 const App = (props) => {
   const [savedList, setSavedList] = useState( [] );
@@ -18,16 +18,26 @@ const App = (props) => {
       <SavedList list={savedList} />
       <BrowserRouter>
       <Route exact path="/" component={MovieList} />
-      console.log()
-      <Route path="/movieList/:id" 
-      render={props => <Movie movie={Movie} />} />
-       
+      <Route path="/movieList/:id" component={Movie} />
       <MovieCard />
-      
       </BrowserRouter>
-
+      <div>
+      <Route path="/movies/:id" render={(props) => <Movie addToSavedList={addToSavedList} {...props} />} />
+      </div>
     </div>
   );
 };
 
 export default App;
+      
+      
+      
+      
+      
+      // {/* <Route exact path="/" render={(props) => <MovieList addToSavedList={addToSavedList} {...props} />} />
+      // <Route path="/movies/:id" render={(props) => <Movie addToSavedList={addToSavedList} {...props} />} /> */}
+      
+      
+      
+
+   
