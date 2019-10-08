@@ -1,34 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import StarRating from './StarRating';
+import { Link } from 'react-router-dom';
 
-const MovieCard = (props) => (
+
+
+const MovieCard = props => {
+  
+ 
+
+ return (
   <div className="movie-card">
-      <div className="movie-card card">
-          <img className="card-img-top" src={props.movie.imageUrl} alt="" />
-          <div className="card-body">
-              <h4 className="card-title">{props.movie.title}</h4>
-              <h6 className="card-subtitle mb-2 text-muted">{props.movie.director}</h6>
-              <p className="text-justify" style={{fontSize: '14px'}}>{props.movie.stars}</p>
-          </div>
-          <div className="card-footer">
-              <div className="clearfix">
-                  <div className="float-left mt-1">
-                      <StarRating rating={props.movie.metascore} />
-                  </div>
-                  <div className="card-footer-badge float-right badge badge-primary badge-pill">{props.movie.rating}</div>
-              </div>
-          </div>
+      <h2>
+        <Link to={`/movies/${props.movie.id}`}>{props.movie.title}</Link>
+      </h2>
+      <div className="movie-director">
+        Director: <em>{props.movie.director}</em>
       </div>
-  </div>
-);
+      <div className="movie-metascore">
+        Metascore: <strong>{props.movie.metascore}</strong>
+      </div>
+      <h3>Actors</h3>
 
-MovieCard.defaultProps = {
-  movie: {}
-};
+      {props.movie.stars.map((star, index) => (
+        <div key={index} className="movie-star">
+          {props.movie.star}
+        </div>
+      ))}
+    </div>
+  );
 
-MovieCard.propTypes = {
-  movie: PropTypes.object
-};
-
+};   
+  
+ 
 export default MovieCard;
