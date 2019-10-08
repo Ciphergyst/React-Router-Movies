@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-
+import { BrowserRouter, Route } from "react-router-dom";
+import Movie from './Movies/Movie';
 import SavedList from './Movies/SavedList';
+import MovieList from './Movies/MovieList';
+import MovieCard from './Movies/MovieCard';
+// import MoviePage from './MoviePage';
 
-const App = () => {
+const App = (props) => {
   const [savedList, setSavedList] = useState( [] );
 
   const addToSavedList = movie => {
@@ -12,7 +16,16 @@ const App = () => {
   return (
     <div>
       <SavedList list={savedList} />
-      <div>Replace this Div with your Routes</div>
+      <BrowserRouter>
+      <Route exact path="/" component={MovieList} />
+      console.log()
+      <Route path="/movieList/:id" 
+      render={props => <Movie movie={Movie} />} />
+       
+      <MovieCard />
+      
+      </BrowserRouter>
+
     </div>
   );
 };
